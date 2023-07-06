@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a25957e77df2745b074d74b732db8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 50
+  Speed: 100
   DPM: 1
   Boom: {fileID: 4314981325396183538, guid: 9385f00b87e2db54ea371d13a9f1b6bd, type: 3}
 --- !u!54 &6785024621001541535

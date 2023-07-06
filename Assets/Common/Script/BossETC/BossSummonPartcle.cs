@@ -27,4 +27,5 @@ public class BossSummonPartcle : MonoBehaviour
         Instantiate(BossSummon, this.transform.position, this.transform.rotation);
         Destroy(this.gameObject);
     }
+
 }

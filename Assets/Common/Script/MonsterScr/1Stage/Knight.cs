@@ -6,6 +6,8 @@ public class Knight :  CommonMonster , GetDamage
 {
     public GameObject BossDie;
     // Start is called before the first frame update
+    [SerializeField]
+    private float MoveDelay;
     void Start()
     {
         HP = MaxHP;
@@ -56,7 +58,7 @@ public class Knight :  CommonMonster , GetDamage
 
     IEnumerator BossStart()
     {
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(MoveDelay);
         StartfindPlayer();
     }
 

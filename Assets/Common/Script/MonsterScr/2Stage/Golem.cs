@@ -6,15 +6,19 @@ public class Golem : CommonMonster, GetDamage
 {
     public GameObject BossDie;
     // Start is called before the first frame update
+    [SerializeField]
+    private float MoveDelay;
     void Start()
     {
         HP = MaxHP;
-        StartfindPlayer();
+        StartCoroutine(BossStart());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PlayerTarget == null)
+        { return; }
         AttackDistCh();
     }
 
@@ -50,6 +54,12 @@ public class Golem : CommonMonster, GetDamage
         Instantiate(Coin, this.transform.position, this.transform.rotation);
         Instantiate(BossDie, this.transform.position, this.transform.rotation);
         Destroy(gameObject);
+    }
+
+    IEnumerator BossStart()
+    {
+        yield return new WaitForSeconds(MoveDelay);
+        StartfindPlayer();
     }
 
 }

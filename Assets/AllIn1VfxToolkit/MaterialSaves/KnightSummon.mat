@@ -7,14 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sphere
+  m_Name: KnightSummon
   m_Shader: {fileID: 4800000, guid: 6eb86e4931b506a408fd1477edec61ea, type: 3}
-  m_ShaderKeywords: FADE_ON
+  m_ShaderKeywords: ADDITIVECONFIG_ON FADEBURN_ON FADE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -36,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeBurnTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e1e79dcc7d08c8545ada46d75689a0e3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeTex:
@@ -115,12 +116,12 @@ Material:
     - _DistortionPower: 10
     - _DistortionScrollXSpeed: 0
     - _DistortionScrollYSpeed: 0
-    - _DstMode: 10
+    - _DstMode: 1
     - _EditorDrawers: 61
-    - _FadeAmount: 1
-    - _FadeBurnGlow: 5
-    - _FadeBurnWidth: 0.01
-    - _FadePower: 0.09
+    - _FadeAmount: -0.1
+    - _FadeBurnGlow: 53
+    - _FadeBurnWidth: 0.074
+    - _FadePower: 0.2
     - _FadeScrollXSpeed: 0
     - _FadeScrollYSpeed: 0
     - _FadeTransition: 0.075
@@ -141,7 +142,7 @@ Material:
     - _RandomSh1Mult: 1
     - _RandomSh2Mult: 1
     - _RandomSh3Mult: 1
-    - _RenderingMode: 5
+    - _RenderingMode: 2
     - _RimAddAmount: 1
     - _RimBias: 0
     - _RimErodesAlpha: 0
@@ -197,7 +198,7 @@ Material:
     - _ShapeXSpeed: 0
     - _ShapeYSpeed: 0
     - _SoftFactor: 0.5
-    - _SrcMode: 5
+    - _SrcMode: 4
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
     - _TimingSeed: 0
@@ -216,15 +217,15 @@ Material:
     - _WaveX: 0
     - _WaveY: 0.5
     - _ZTestMode: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _BackFaceTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _Color: {r: 0.28609115, g: 0, b: 0.3773585, a: 1}
+    - _Color: {r: 0.6698113, g: 0.08846565, b: 0.30426815, a: 1}
     - _ColorGradingDark: {r: 1, g: 1, b: 1, a: 1}
     - _ColorGradingLight: {r: 1, g: 1, b: 1, a: 1}
     - _ColorGradingMiddle: {r: 1, g: 1, b: 1, a: 1}
     - _DepthGlowColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
+    - _FadeBurnColor: {r: 0, g: 0.13047147, b: 1, a: 1}
     - _FrontFaceTint: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}

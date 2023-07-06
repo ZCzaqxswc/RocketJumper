@@ -1981,7 +1981,6 @@ MonoBehaviour:
   MaxHP: 200
   HP: 200
   AttackPower: 25
-  AttackDelay: 0
   AttackDist: 8
   anim: {fileID: 507680747804366191}
   AttackColl: {fileID: 6925747679098430804}
@@ -1996,6 +1995,7 @@ MonoBehaviour:
   DownScore: 10
   Coin: {fileID: 2196556447445467743, guid: dddb2288096668d498a6a7fdf9aae049, type: 3}
   BossDie: {fileID: 3852179685882339248, guid: d7f7004cba9198c45ba0fd020ccce6ad, type: 3}
+  MoveDelay: 4
 --- !u!1 &459327850435268169
 GameObject:
   m_ObjectHideFlags: 0
