@@ -20,7 +20,6 @@ public class CommonMonster : MonoBehaviour
 
 	public float HP;
 	
-
 	public float AttackPower;
 
 
@@ -81,7 +80,6 @@ public class CommonMonster : MonoBehaviour
         if (Dist < AttackDist)
         {
             agent.ResetPath();
-			AttackStart();
         }
         else
         {
@@ -149,6 +147,7 @@ public class CommonMonster : MonoBehaviour
 
 
 	}
+
 
 }
 

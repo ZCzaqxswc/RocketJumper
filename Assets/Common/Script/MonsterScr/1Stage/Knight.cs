@@ -9,12 +9,14 @@ public class Knight :  CommonMonster , GetDamage
     void Start()
     {
         HP = MaxHP;
-        StartfindPlayer();
+        StartCoroutine(BossStart());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PlayerTarget == null)
+        { return; }
         AttackDistCh();
 	}
 
@@ -50,6 +52,12 @@ public class Knight :  CommonMonster , GetDamage
         Instantiate(Coin, this.transform.position, this.transform.rotation);
         Instantiate(BossDie, this.transform.position, this.transform.rotation);
         Destroy(gameObject);
+    }
+
+    IEnumerator BossStart()
+    {
+        yield return new WaitForSeconds(2.2f);
+        StartfindPlayer();
     }
 
 }
