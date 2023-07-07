@@ -172,6 +172,7 @@ public class Player : MonoBehaviour, GetDamage
 
     public void BulletFire()
     {
+        //조준점 위치
         if (Physics.Raycast(firePos.transform.position, firePos.transform.forward, out Ray, 1000f))
         {
             CrossHair.transform.position = Ray.point;
@@ -180,17 +181,19 @@ public class Player : MonoBehaviour, GetDamage
                 Ray.collider.gameObject.GetComponent<Scr_Shop>().Setting();
             }
         }
+        //과부화
         if (DonShot)
         {
             OverLoadEffect.SetActive(true);
             return;
         }
+        //과부화 해제
         else 
         {
             OverLoadEffect.SetActive(false);
         }
 
-
+        //연사모드
         float bDown = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.Touch);
         if (bDown != 0 && !Shot && Mode == GunMode.shot)
         {
@@ -208,7 +211,7 @@ public class Player : MonoBehaviour, GetDamage
         }
     }
 
-
+    //점수 보여주는 기능
     void SocreSee()
     {
         Score.text = Scr_PlayerManager.instance.nowScore.ToString();
@@ -225,7 +228,7 @@ public class Player : MonoBehaviour, GetDamage
             ScoreUI.SetActive(false);
         }
     }
-
+    //카메라 회전
     void CamRot()
     {
 
@@ -240,6 +243,7 @@ public class Player : MonoBehaviour, GetDamage
         }
     }
 
+    //단발,연사모드
     public void ModeChange()
     {
         if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
@@ -257,6 +261,7 @@ public class Player : MonoBehaviour, GetDamage
         }
     }
 
+    //이동
     public void Move()
     {
         if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && !MoveTF)
@@ -279,7 +284,7 @@ public class Player : MonoBehaviour, GetDamage
         
     }
     
-
+    //이동횟수 회복
     public void MoveCreate()
     {
         MoveTF = true;
@@ -290,6 +295,7 @@ public class Player : MonoBehaviour, GetDamage
     }
 
 
+    //내가 피해입는거
     public void Damage(float A_DMP)
     {
         HP -= A_DMP;
@@ -301,6 +307,8 @@ public class Player : MonoBehaviour, GetDamage
         }
     }
 
+    //총알발사
+    //인터페이스로 옮길때 참고할것
     public void Fire()
     {
         if (BulletLim > nowBulletLim)
@@ -317,7 +325,7 @@ public class Player : MonoBehaviour, GetDamage
         }
         
     }
-
+    //능력치UI보여주기
     public void Show()
 	{
 
@@ -332,7 +340,7 @@ public class Player : MonoBehaviour, GetDamage
         
 	}
 
-
+    //총알횟수 제거하고 점프 늘려주는기능
     public void Change()
     {
         if (OVRInput.GetDown(OVRInput.Button.Three))
@@ -363,6 +371,7 @@ public class Player : MonoBehaviour, GetDamage
         }
     }
 
+    //방옮길때 회복해주는 기능
     public void HPHeal()
     {
         if (MaxHP > HP)
@@ -372,6 +381,7 @@ public class Player : MonoBehaviour, GetDamage
         }
     }
 
+    //자동으로 발사하는 코루틴
     IEnumerator AutoFire()
     {
         yield return new WaitForSeconds(BulletDelay);
@@ -391,6 +401,7 @@ public class Player : MonoBehaviour, GetDamage
         
     }
 
+    //점프횟수 회복
     IEnumerator MoveFire()
     {
 
@@ -411,6 +422,8 @@ public class Player : MonoBehaviour, GetDamage
         yield return new WaitForSeconds(0.5f);
         MoveTF = false;
     }
+
+    //총알 회복
     IEnumerator GunRestore()
     {
         while (true)
@@ -430,12 +443,14 @@ public class Player : MonoBehaviour, GetDamage
         
     }
 
+    //과부화
     IEnumerator GunOverload()
     {
         yield return new WaitForSeconds(5f);
         DonShot = false;
     }
 
+    //공격력 업글
     public void DPMUp()
     {
         if (Scr_PlayerManager.instance.Coin > 0)
@@ -702,6 +717,7 @@ public class Player : MonoBehaviour, GetDamage
         }
     }
 
+    //스탯초기화
     public void playerone(string scene)
     {
         switch (scene)

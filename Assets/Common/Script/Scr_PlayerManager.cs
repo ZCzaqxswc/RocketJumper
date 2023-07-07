@@ -6,6 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 
+//저장 데이터
 public class ScoreData
 {
     public float Score;
@@ -56,7 +57,7 @@ public class Scr_PlayerManager : MonoBehaviour
         }
             
     }
-    // Start is called before the first frame update
+    // 시작할때 데이터 불러오기
     void Start()
     {
         DataInfo = new List<ScoreData>();
@@ -66,12 +67,13 @@ public class Scr_PlayerManager : MonoBehaviour
         Load();
     }
 
-    // Update is called once per frame
+    //인트로방에 들어왔을때 점수비교해서 높으면 저장하는기능
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         name = SceneManager.GetActiveScene().name;
         if (name == "0_Intro")
         {
+            //현 시점 1코인당 300점
             nowScore += Coin * 300f;
             Coin = 0;
             if (nowScore > HighScore)
@@ -89,6 +91,7 @@ public class Scr_PlayerManager : MonoBehaviour
                         DataInfo[0].Score = HighScore;
                     }
                 }
+                //저장
                 string DB = JsonConvert.SerializeObject(DataInfo, Formatting.Indented);
                 File.WriteAllText(Path.Combine(Application.persistentDataPath, "Save.json"), DB);
             }
@@ -101,7 +104,7 @@ public class Scr_PlayerManager : MonoBehaviour
     {
         nowScore += A_Score;
     }
-
+    //스탯 리셋
     void ResetStat()
     {
         GunMax = 100;
@@ -117,7 +120,7 @@ public class Scr_PlayerManager : MonoBehaviour
         nowScore = 0;
         Coin = 0;
     }
-
+    //저장된 데이터 불러오기
 	public void Load()
 	{
         string text = "";

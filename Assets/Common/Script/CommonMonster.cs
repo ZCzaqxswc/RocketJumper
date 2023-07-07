@@ -50,6 +50,8 @@ public class CommonMonster : MonoBehaviour
 	private float Dist;
 
 	public GameObject Coin;
+
+	//플레이어가 방에 입장했을때
 	public void StartfindPlayer()
 	{
 		DieFT = false;
@@ -68,7 +70,7 @@ public class CommonMonster : MonoBehaviour
 		Dist = Vector3.Distance(PlayerTarget.position, transform.position);
 	}
 
-	
+	//공격
 	public void AttackDistCh()
 	{
 		if (DieFT)
@@ -87,35 +89,38 @@ public class CommonMonster : MonoBehaviour
         }
 	}
 
-
+	//공격때 애니메이션 재생,콜라이더 활성화
 	public void AttackStart()
 	{
 		anim.SetTrigger("Attack");
 		AttackColl.enabled = true;
 
 	}
-
+	//원거리 몬스터 공격
 	public void RangeAttackStrat()
 	{
 		anim.SetTrigger("Fire");
 		agent.ResetPath();
 	}
+	//원거리 몬스터 공격오브젝트 생성
 	protected virtual void RangeAttack()
 	{
 		Instantiate(RangeAttackObj, AttackOffset.position, AttackOffset.rotation);
 	}
-
+	//공격끝나고 콜라이더 끄기
 	protected virtual void AttackEnd()
 	{
 		AttackColl.enabled = false;
 	}
 	
+	//죽었을때
 	protected virtual void Die()
 	{
 		if (DieFT)
 		{
 			return;
 		}
+		//확률적으로 코인 생성
 		int A = Random.Range(0, 100);
 		if (A <= 5)
 		{
@@ -126,12 +131,12 @@ public class CommonMonster : MonoBehaviour
 		Scr_PlayerManager.instance.SumScore(Score);
 		DieFT = true;
 	}
-
+	//죽었을때 이펙트 생성
 	protected virtual void PartcleStart()
 	{
 		Instantiate(PartcleObj, AttackOffset.position, AttackOffset.rotation);
 	}
-
+	//시간이 지날때마나 점수가 떨어지는 기능
 	IEnumerator ScoreDown()
 	{
 		while (true)
